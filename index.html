@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruang Peduli Digital - SMAN 3 Balikpapan</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Fredoka & Quicksand untuk kesan imut & bersahabat -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f0f7ff;
+        }
+        h1, h2, h3, .font-cute {
+            font-family: 'Fredoka', sans-serif;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0f7ff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c3e2ff;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a5d3ff;
+        }
+    </style>
+</head>
+<body class="text-slate-700 min-h-screen flex flex-col relative overflow-x-hidden selection:bg-pink-200">
+
+    <!-- Efek Background Dekapan Hangat (Radial Gradient/Blobs) -->
+    <div class="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
+        <div class="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-tr from-blue-100 to-pink-100 opacity-60 blur-3xl"></div>
+        <div class="absolute top-[40%] -right-[15%] w-[50%] h-[70%] rounded-full bg-gradient-to-bl from-indigo-50 to-pink-100 opacity-50 blur-3xl"></div>
+        <div class="absolute -bottom-[10%] left-[20%] w-[50%] h-[50%] rounded-full bg-gradient-to-r from-blue-50 to-purple-100 opacity-70 blur-3xl"></div>
+    </div>
+
+    <!-- NAVBAR MELAYANG -->
+    <nav class="sticky top-4 z-40 mx-4 lg:mx-auto max-w-7xl left-0 right-0 rounded-3xl bg-blue-100/60 border border-white/50 backdrop-blur-xl shadow-lg transition-all duration-300 hover:shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl sm:text-2xl font-cute font-bold text-blue-600 tracking-wide flex items-center gap-1.5">
+                        Ruang Peduli Digital <span class="animate-bounce">🏫</span>
+                    </span>
+                </div>
+                <!-- Menu Desktop -->
+                <div class="hidden md:flex items-center space-x-2">
+                    <a href="#beranda" class="px-4 py-2 rounded-full font-bold text-slate-600 hover:text-blue-600 hover:bg-white/60 transition-all duration-300 hover:translate-y-[-2px]">Beranda</a>
+                    <a href="#edukasi" class="px-4 py-2 rounded-full font-bold text-slate-600 hover:text-blue-600 hover:bg-white/60 transition-all duration-300 hover:translate-y-[-2px]">Pusat Edukasi</a>
+                    <a href="#game" class="px-4 py-2 rounded-full font-bold text-slate-600 hover:text-blue-600 hover:bg-white/60 transition-all duration-300 hover:translate-y-[-2px]">Game Ular Tangga</a>
+                    <a href="#lapor" class="px-4 py-2 rounded-full font-bold text-white bg-blue-500 hover:bg-blue-600 shadow-md hover:shadow-blue-200 transition-all duration-300 hover:scale-105">Ruang Lapor</a>
+                </div>
+                <!-- Menu Mobile Button -->
+                <div class="md:hidden">
+                    <button id="btn-mobile-menu" class="p-2 rounded-xl bg-white/50 text-blue-600 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Dropdown Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 border-t border-white/30">
+            <a href="#beranda" class="block px-4 py-2 rounded-2xl font-bold text-slate-600 hover:bg-white/60">Beranda</a>
+            <a href="#edukasi" class="block px-4 py-2 rounded-2xl font-bold text-slate-600 hover:bg-white/60">Pusat Edukasi</a>
+            <a href="#game" class="block px-4 py-2 rounded-2xl font-bold text-slate-600 hover:bg-white/60">Game Ular Tangga</a>
+            <a href="#lapor" class="block px-4 py-2 text-center rounded-2xl font-bold text-white bg-blue-500">Ruang Lapor</a>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-24">
+
+        <!-- SECTION 1: BERANDA -->
+        <section id="beranda" class="pt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 space-y-6">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-pink-100 text-pink-500 font-bold text-sm tracking-wide border border-pink-200">Halo SMAGA Balikpapan! 👋</span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-800 leading-tight">
+                    Ekosistem Digital yang <br><span class="text-blue-500 bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">Aman & Penuh Kasih</span>
+                </h1>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    Selamat datang di **Ruang Peduli Digital**. Di sini kita bersama-sama membangun kebiasaan bermedia sosial yang sehat, melindungi privasi diri, dan menjunjung etika digital. Bersama mewujudkan warga SMAN 3 Balikpapan yang cerdas secara digital dan sehat secara mental!
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#game" class="px-6 py-3.5 rounded-2xl bg-blue-500 hover:bg-blue-600 text-white font-cute font-bold text-lg shadow-lg shadow-blue-200 hover:shadow-xl transition-all duration-300 hover:translate-y-[-4px] flex items-center gap-2">
+                        Main Ular Tangga 🎲
+                    </a>
+                    <a href="#edukasi" class="px-6 py-3.5 rounded-2xl bg-white hover:bg-pink-50 text-pink-500 font-cute font-bold text-lg border-2 border-pink-200 shadow-md transition-all duration-300 hover:translate-y-[-4px] flex items-center gap-2">
+                        Pusat Edukasi 📚
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Banner Integrasi (BK & PIK-R) -->
+            <div class="lg:col-span-5 bg-gradient-to-tr from-pink-100/80 to-blue-100/80 p-8 rounded-3xl border border-white/60 shadow-xl relative overflow-hidden group hover:scale-[1.02] transition-all duration-300">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-white/20 rounded-full blur-xl"></div>
+                <h3 class="text-2xl font-cute font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    Sistem Terintegrasi 🤝
+                </h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                    Aplikasi ini dirancang sebagai jembatan langsung dan rahasia yang terintegrasi secara resmi dengan organisasi internal sekolah kami:
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-3 bg-white/80 p-4 rounded-2xl border border-white">
+                        <span class="text-2xl">🎋</span>
+                        <div>
+                            <h4 class="font-bold text-slate-800">PIK-R Bamboo SMAN 3 Balikpapan</h4>
+                            <p class="text-xs text-slate-500">Pusat Informasi dan Konseling Remaja yang siap merangkul keluh kesahmu tanpa menghakimi.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 bg-white/80 p-4 rounded-2xl border border-white">
+                        <span class="text-2xl">🏫</span>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Bimbingan Konseling (BK) SMAN 3</h4>
+                            <p class="text-xs text-slate-500">Layanan bimbingan profesional untuk menjamin keamanan, kesehatan mental, serta kenyamanan akademikmu.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BIJAK BERMEDIA SOSIAL SUMMARY -->
+        <div class="bg-blue-50/50 rounded-[2.5rem] p-8 border border-white shadow-inner">
+            <h3 class="text-3xl font-cute text-center text-slate-800 mb-8">💡 5 Pilar Utama Bijak Bermedia Sosial</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md hover:translate-y-[-4px] transition-all duration-300 text-center border border-blue-50">
+                    <span class="text-4xl block mb-3">🧐</span>
+                    <h4 class="font-bold mb-2">Kesadaran Konten</h4>
+                    <p class="text-xs text-slate-500">Pahami betul dampak dari setiap status, foto, atau video yang ingin kamu bagikan.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md hover:translate-y-[-4px] transition-all duration-300 text-center border border-blue-50">
+                    <span class="text-4xl block mb-3">🔒</span>
+                    <h4 class="font-bold mb-2">Menjaga Privasi</h4>
+                    <p class="text-xs text-slate-500">Batasi penyebaran data pribadi yang sensitif di platform umum.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md hover:translate-y-[-4px] transition-all duration-300 text-center border border-blue-50">
+                    <span class="text-4xl block mb-3">💖</span>
+                    <h4 class="font-bold mb-2">Hargai Sesama</h4>
+                    <p class="text-xs text-slate-500">Terapkan etika berkomentar yang santun tanpa merendahkan orang lain.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md hover:translate-y-[-4px] transition-all duration-300 text-center border border-blue-50">
+                    <span class="text-4xl block mb-3">🛑</span>
+                    <h4 class="font-bold mb-2">Cegah Hoaks</h4>
+                    <p class="text-xs text-slate-500">Saring info sebelum sharing. Selalu verifikasi kebenaran berita.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md hover:translate-y-[-4px] transition-all duration-300 text-center border border-blue-50">
+                    <span class="text-4xl block mb-3">🌱</span>
+                    <h4 class="font-bold mb-2">Mental Sehat</h4>
+                    <p class="text-xs text-slate-500">Batasi screen-time jika medsos mulai merusak ketenangan jiwamu.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: PUSAT LITERASI (EDUKASI) -->
+        <section id="edukasi" class="space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-4xl font-cute text-slate-800">📚 Pusat Literasi Digital</h2>
+                <p class="text-slate-500 max-w-xl mx-auto">Pahami bekal wawasan digital paling penting demi menjaga diri kita tetap terlindungi dan beretika di internet.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Grid 1: CABE Digital -->
+                <div class="bg-blue-100/50 p-8 rounded-[2rem] border border-blue-200/50 space-y-6 shadow-md hover:shadow-lg transition-all duration-300">
+                    <h3 class="text-2xl font-cute text-blue-700 flex items-center gap-2">🌶️ CABE Digital (4 Pilar Utama)</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-2xl shadow-sm border border-blue-100 hover:scale-105 transition-all duration-300">
+                            <span class="font-cute text-blue-500 font-bold block mb-1">1. Cakap Digital</span>
+                            <p class="text-xs text-slate-500">Mengerti teknologi perangkat keras, lunak, serta sistem operasi digital secara operasional.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl shadow-sm border border-blue-100 hover:scale-105 transition-all duration-300">
+                            <span class="font-cute text-blue-500 font-bold block mb-1">2. Aman Digital</span>
+                            <p class="text-xs text-slate-500">Kemampuan mengamankan data pribadi, memahami risiko penipuan, serta sistem proteksi akun.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl shadow-sm border border-blue-100 hover:scale-105 transition-all duration-300">
+                            <span class="font-cute text-blue-500 font-bold block mb-1">3. Budaya Digital</span>
+                            <p class="text-xs text-slate-500">Membangun aktivitas digital yang berasaskan nilai Pancasila dan kebinekaan bangsa.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl shadow-sm border border-blue-100 hover:scale-105 transition-all duration-300">
+                            <span class="font-cute text-blue-500 font-bold block mb-1">4. Etika Digital</span>
+                            <p class="text-xs text-slate-500">Kesadaran tata krama, empati netizen, dan menghindari ujaran kebencian di ruang siber.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid 2: Keamanan & Privasi Data -->
+                <div class="bg-pink-100/50 p-8 rounded-[2rem] border border-pink-200/50 space-y-6 shadow-md hover:shadow-lg transition-all duration-300">
+                    <h3 class="text-2xl font-cute text-pink-700 flex items-center gap-2">🔐 Keamanan & Privasi Data</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-2xl shadow-sm border border-pink-100 hover:scale-105 transition-all duration-300">
+                            <span class="font-cute text-pink-500 font-bold block mb-1">Pentingnya 2FA</span>
+                            <p class="text-xs text-slate-500">Autentikasi dua faktor (OTP/Authenticator) mencegah pembobolan akun bahkan jika kata sandimu bocor.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl shadow-sm border border-pink-100 hover:scale-105 transition-all duration-300">
+                            <span class="font-cute text-pink-500 font-bold block mb-1">Bahaya Over-sharing</span>
+                            <p class="text-xs text-slate-500">Menyebarkan KTP, No. HP, nama ibu kandung, atau alamat rumah memicu pencurian identitas serius.</p>
+                        </div>
+                        <div class="bg-white p-4 sm:col-span-2 rounded-2xl shadow-sm border border-pink-100 hover:scale-105 transition-all duration-300">
+                            <span class="font-cute text-pink-500 font-bold block mb-1">Deteksi Phishing</span>
+                            <p class="text-xs text-slate-500">Waspadai link mencurigakan dengan domain tidak resmi (misal: login-instagram-palsu.com). Selalu periksa ulang URL sebelum memasukkan kata sandi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid 3: Etika & Kesehatan Mental -->
+                <div class="bg-purple-100/50 p-8 rounded-[2rem] border border-purple-200/50 space-y-6 shadow-md hover:shadow-lg transition-all duration-300">
+                    <h3 class="text-2xl font-cute text-purple-700 flex items-center gap-2">🌱 Etika & Kesehatan Mental</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-2xl shadow-sm border border-purple-100 hover:scale-105 transition-all duration-300">
+                            <span class="font-cute text-purple-500 font-bold block mb-1">Saring Sebelum Sharing</span>
+                            <p class="text-xs text-slate-500">Selalu uji kebenaran suatu informasi dari sumber kredibel sebelum menyebarkannya kembali.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl shadow-sm border border-purple-100 hover:scale-105 transition-all duration-300">
+                            <span class="font-cute text-purple-500 font-bold block mb-1">Cyberbullying Sehat</span>
+                            <p class="text-xs text-slate-500">Hadapi perundungan siber dengan tenang: simpan bukti screenshot, blokir akun penyerang, lalu laporkan.</p>
+                        </div>
+                        <div class="bg-white p-4 sm:col-span-2 rounded-2xl shadow-sm border border-purple-100 hover:scale-105 transition-all duration-300">
+                            <span class="font-cute text-purple-500 font-bold block mb-1">Keabadian Jejak Digital</span>
+                            <p class="text-xs text-slate-500">Apa yang diunggah di internet tidak pernah benar-benar hilang. Konten masa lalu dapat memengaruhi studi lanjutan, karier, dan citra pribadimu kelak.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid 4: Hukum & Regulasi Digital -->
+                <div class="bg-emerald-100/50 p-8 rounded-[2rem] border border-emerald-200/50 space-y-6 shadow-md hover:shadow-lg transition-all duration-300">
+                    <h3 class="text-2xl font-cute text-emerald-700 flex items-center gap-2">⚖️ Hukum & Regulasi Digital</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-2xl shadow-sm border border-emerald-100 hover:scale-105 transition-all duration-300">
+                            <span class="font-cute text-emerald-500 font-bold block mb-1">UU ITE (No. 1 Tahun 2024)</span>
+                            <p class="text-xs text-slate-500">Mengatur sanksi tegas atas penyebaran hoaks, pencemaran nama baik, peretasan, dan asusila digital.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl shadow-sm border border-emerald-100 hover:scale-105 transition-all duration-300">
+                            <span class="font-cute text-emerald-500 font-bold block mb-1">UU PDP (No. 27 Tahun 2022)</span>
+                            <p class="text-xs text-slate-500">Perlindungan Data Pribadi menjamin hak setiap individu untuk menyetujui, menarik, atau menghapus datanya.</p>
+                        </div>
+                        <div class="bg-white p-4 sm:col-span-2 rounded-2xl shadow-sm border border-emerald-100 hover:scale-105 transition-all duration-300">
+                            <span class="font-cute text-emerald-500 font-bold block mb-1">PP TUNAS (Perlindungan Anak di Ruang Digital)</span>
+                            <p class="text-xs text-slate-500">Kerangka hukum preventif yang mewajibkan penyedia platform menjamin keamanan anak dari eksploitasi, paparan konten radikal, kekerasan, serta kecanduan digital.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fitur Medsos Card -->
+            <div class="bg-amber-100/40 p-8 rounded-[2rem] border border-amber-200/50 shadow-md">
+                <h3 class="text-2xl font-cute text-amber-700 mb-6 flex items-center gap-2">🛠️ Maksimalkan Fitur Pelindung Medsos</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white p-5 rounded-2xl border border-amber-100 hover:scale-105 transition-all duration-300">
+                        <div class="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center font-bold text-amber-600 mb-3">🤫</div>
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">Mute (Senyap)</h4>
+                        <p class="text-xs text-slate-500">Menyembunyikan postingan atau story seseorang dari halaman berandamu tanpa perlu meng-unfollow.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-amber-100 hover:scale-105 transition-all duration-300">
+                        <div class="w-10 h-10 bg-rose-100 rounded-xl flex items-center justify-center font-bold text-rose-600 mb-3">🚫</div>
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">Block (Blokir)</h4>
+                        <p class="text-xs text-slate-500">Memutus komunikasi total. Pengguna tersebut tidak bisa lagi mencari profilmu atau mengirim pesan.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-amber-100 hover:scale-105 transition-all duration-300">
+                        <div class="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center font-bold text-indigo-600 mb-3">🛡️</div>
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">Restrict (Batasi)</h4>
+                        <p class="text-xs text-slate-500">Membatasi interaksi. Komentar mereka hanya terlihat oleh diri mereka sendiri, kecuali jika kamu menyetujuinya.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-amber-100 hover:scale-105 transition-all duration-300">
+                        <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center font-bold text-red-600 mb-3">📢</div>
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">Report (Laporkan)</h4>
+                        <p class="text-xs text-slate-500">Mengadukan akun atau unggahan yang melanggar ketentuan komunitas agar dihapus oleh sistem.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: GAME ULAR TANGGA DIGITAL -->
+        <section id="game" class="space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-4xl font-cute text-slate-800">🎲 Ular Tangga Literasi Digital</h2>
+                <p class="text-slate-500 max-w-xl mx-auto">Kocok dadu dan selesaikan tantangan kuis seputar literasi digital untuk terus melaju hingga garis akhir!</p>
+            </div>
+
+            <!-- Game Layout Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- KIRI: Papan Ular Tangga (Grid 10x10) -->
+                <div class="lg:col-span-8 bg-white p-3 sm:p-6 rounded-[2.5rem] border-4 border-blue-200 shadow-xl overflow-hidden">
+                    <div class="relative w-full aspect-square max-w-[580px] mx-auto">
+                        <!-- Canvas / Board Grid -->
+                        <div id="board-grid" class="grid grid-cols-10 grid-rows-10 w-full h-full border-2 border-slate-300 rounded-2xl overflow-hidden relative">
+                            <!-- JS akan merender kotak-kotak di sini -->
+                        </div>
+                        
+                        <!-- Pion Pemain -->
+                        <div id="player-pion" class="absolute w-[8%] h-[8%] bg-rose-500 border-2 sm:border-4 border-white rounded-full shadow-lg transition-all duration-500 flex items-center justify-center font-bold text-white text-[9px] sm:text-xs pointer-events-none z-10" style="left: 1%; bottom: 1%;">
+                            ME
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KANAN: Panel Kontrol & Riwayat -->
+                <div class="lg:col-span-4 bg-white/80 border border-white/60 p-6 rounded-3xl shadow-lg space-y-6">
+                    <div class="text-center space-y-3 bg-blue-50/60 p-6 rounded-2xl border border-blue-100">
+                        <h4 class="font-cute text-xl text-slate-800">Mulai Petualanganmu!</h4>
+                        <!-- Tampilan Dadu -->
+                        <div id="dice-view" class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-tr from-blue-500 to-indigo-500 text-white rounded-2xl mx-auto flex items-center justify-center text-3xl sm:text-4xl shadow-md border-2 border-white animate-pulse">
+                            🎲
+                        </div>
+                        <p id="game-status" class="text-sm font-semibold text-slate-600">Tekan tombol di bawah untuk mengocok dadu.</p>
+                        <button id="btn-roll" class="w-full py-3.5 rounded-2xl bg-blue-500 hover:bg-blue-600 text-white font-cute font-bold text-lg shadow-md hover:shadow-blue-200 transition-all duration-300 hover:scale-[1.02]">
+                            Kocok Dadu!
+                        </button>
+                    </div>
+
+                    <!-- Papan Informasi Skor/Aturan -->
+                    <div class="space-y-3 text-sm text-slate-600 bg-pink-50/40 p-5 rounded-2xl border border-pink-100">
+                        <h5 class="font-bold text-pink-600">Aturan Bermain:</h5>
+                        <ul class="list-disc list-inside space-y-2 text-xs">
+                            <li>Setiap giliran, kocok dadu untuk mendapatkan angka target.</li>
+                            <li>Selesaikan tantangan <strong>Kuis Literasi Digital</strong> yang muncul.</li>
+                            <li><strong>Benar:</strong> Pion berjalan maju. Awas jebakan ular atau bonus tangga!</li>
+                            <li><strong>Salah:</strong> Jawaban dikoreksi, langkah dibatalkan (kamu tetap di tempat semula).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: RUANG PENGADUAN AMAN & KONTAK DARURAT -->
+        <section id="lapor" class="pt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white/80 p-8 rounded-[3rem] border border-white shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400"></div>
+            
+            <div class="lg:col-span-7 space-y-6">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-red-50 text-red-500 font-bold text-sm border border-red-100">Layanan Aduan Privat & Terbuka 🤍</span>
+                <h2 class="text-4xl font-cute text-slate-800 leading-tight">
+                    Ruang Pengaduan Aman <br>& Bebas Trauma
+                </h2>
+                <p class="text-slate-600 leading-relaxed">
+                    Di sini Anda bebas mengeluarkan seluruh keluh kesah, beban pikiran, atau trauma siber yang sedang dialami. Kami sangat menghormati privasi Anda. Identitas, nama, dan detail laporan Anda dijamin 100% aman, rahasia, serta langsung ditindaklanjuti dengan penuh kelembutan oleh tim khusus kami.
+                </p>
+                <div class="p-5 bg-blue-50/60 rounded-2xl border border-blue-100 text-sm text-slate-600">
+                    <span class="font-bold text-blue-600 block mb-1">🔒 Enkripsi & Anonimitas</span>
+                    Formulir pengaduan kami menggunakan sistem tertutup yang hanya dapat diakses oleh guru BK terpilih dan psikolog profesional mitra SMAN 3 Balikpapan.
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 flex flex-col items-center justify-center space-y-6 text-center">
+                <div class="space-y-2">
+                    <p class="font-cute text-lg text-pink-500">Mau langsung mengadu secara rahasia dan aman?</p>
+                </div>
+                <!-- Tombol CTA Bounce -->
+                <a href="https://forms.gle/dSxhCf8d5rPc329T7" target="_blank" class="px-8 py-5 rounded-[2rem] bg-gradient-to-r from-pink-400 via-pink-500 to-rose-400 text-white font-cute font-bold text-xl shadow-lg shadow-pink-200 hover:shadow-xl hover:shadow-pink-300 transition-all duration-300 hover:translate-y-[-6px] animate-bounce inline-flex items-center gap-2 tracking-wide">
+                    ⚠️ Laporkan Sekarang (Sangat Aman) 
+                </a>
+
+                <!-- Kontak Darurat -->
+                <div class="w-full space-y-3 pt-4 border-t border-slate-100">
+                    <p class="text-xs text-slate-400 uppercase tracking-wider font-bold">Kontak Darurat Alternatif</p>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span class="px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold">🎋 PIK-R Bamboo SMAGA</span>
+                        <span class="px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-semibold">🏫 BK SMAN 3</span>
+                        <span class="px-3 py-1.5 rounded-full bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">📞 Hotline (119 ext 8)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-blue-100/40 border-t border-white mt-24 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-3 text-sm text-slate-500">
+            <p class="font-cute text-lg text-slate-700 font-bold">Ruang Peduli Digital 🏫</p>
+            <p>© 2026 Ruang Peduli Digital · SMAN 3 Balikpapan. All Rights Reserved.</p>
+            <p class="text-xs text-slate-400">Berkolaborasi erat bersama PIK-R Bamboo SMAN 3 Balikpapan & Bimbingan Konseling SMAN 3 Balikpapan.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL POPUP KUIS ULAR TANGGA -->
+    <div id="quiz-modal" class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-[2.5rem] border-4 border-pink-200 max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl relative animate-scale-up">
+            <div class="text-center space-y-2">
+                <span class="inline-block px-3 py-1 rounded-full bg-pink-50 text-pink-500 font-bold text-xs uppercase tracking-wider">Tantangan Kuis Literasi Digital! 📝</span>
+                <h4 id="quiz-question" class="text-lg sm:text-xl font-bold text-slate-800 leading-snug">
+                    Bagaimanakah sikap yang paling benar saat melihat berita mencurigakan?
+                </h4>
+            </div>
+
+            <!-- List Pilihan Jawaban -->
+            <div id="quiz-options-container" class="space-y-3">
+                <!-- Diisi dinamis oleh JS -->
+            </div>
+
+            <!-- Feedback Pembahasan (Hidden by Default) -->
+            <div id="quiz-feedback" class="p-4 rounded-2xl text-sm hidden">
+                <!-- Diisi dinamis oleh JS -->
+            </div>
+
+            <!-- Button Lanjutkan -->
+            <button id="btn-quiz-next" class="w-full py-3 rounded-2xl bg-blue-500 text-white font-cute font-bold text-lg hover:bg-blue-600 transition-all duration-300 hidden">
+                Lanjutkan Langkah! 🚀
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- 1. SETUP MOBILE MENU ---
+        const btnMobileMenu = document.getElementById('btn-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        btnMobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- 2. JAVASCRIPT BANK SOAL (50 SOAL MANDIRI DENGAN JAWABAN ACAK DAN TANTANGAN LEBIH TINGGI) ---
+        // Format: { q: Pertanyaan, o: [Pilihan], a: indeks_jawaban_benar, f: Pembahasan/Feedback }
+        const quizBank = [
+            { q: "Apa kepanjangan resmi dari 4 pilar 'CABE Digital' yang menjadi fondasi literasi siber kita?", o: ["Cerdas, Aktif, Bersih, Edukatif", "Cakap, Aman, Budaya, Etika", "Cermat, Aman, Bijak, Empati", "Cari, Analisis, Bagikan, Evaluasi"], a: 1, f: "Tepat! CABE Digital dibentuk oleh Cakap Digital, Aman Digital, Budaya Digital, dan Etika Digital." },
+            { q: "Sesuai dengan regulasi terbaru, undang-undang manakah yang mengesahkan jaminan perlindungan data pribadi?", o: ["UU No. 11 Tahun 2008", "UU No. 19 Tahun 2016", "UU No. 1 Tahun 2024", "UU No. 27 Tahun 2022"], a: 3, f: "Benar! Perlindungan Data Pribadi dijamin secara khusus melalui UU No. 27 Tahun 2022 (UU PDP)." },
+            { q: "Metode paling efektif untuk mengamankan akun dari kejahatan pembajakan meskipun peretas mengetahui kata sandimu adalah...", o: ["Mengganti username sesering mungkin", "Menyembunyikan email dari profil", "Mengaktifkan Two-Factor Authentication (2FA)", "Membuat kata sandi yang memuat nama hewan peliharaan"], a: 2, f: "Benar! 2FA memberikan lapisan pertahanan ganda berupa kode dinamis yang dikirim ke perangkat fisik Anda." },
+            { q: "Kepanjangan dari aturan 'PP TUNAS' yang bertujuan mencegah eksploitasi anak di platform digital adalah...", o: ["Penyediaan Platform Teknologi Untuk Anak Sehat", "Peraturan Pemerintah Tata Usaha Negara Anak Sejahtera", "Perlindungan Anak di Ruang Digital", "Peraturan Penyelenggaraan Teknologi Untuk Anak Sekolah"], a: 2, f: "Tepat! PP TUNAS berfokus penuh untuk melindungi hak-hak anak dan remaja di ruang siber." },
+            { q: "Mengapa mempublikasikan foto kartu identitas (seperti kartu pelajar atau KTP) di media sosial dikategorikan sangat berbahaya?", o: ["Dapat mengurangi estetika halaman profil media sosial", "Berisiko disalahgunakan orang jahat untuk penipuan pinjaman online", "Mengakibatkan ruang memori server aplikasi penuh", "Bisa memicu pemblokiran otomatis oleh pihak pengembang aplikasi"], a: 1, f: "Benar! Informasi pada KTP sangat sering dijadikan bahan verifikasi identitas finansial oleh sindikat kriminal." },
+            { q: "Menggunakan fitur perlindungan bawaan seperti Mute, Block, dan Report di media sosial pada dasarnya adalah langkah...", o: ["Memusuhi orang lain secara pasif", "Mitigasi mandiri dalam menghadapi aksi perundungan siber", "Tindakan melanggar hak asasi netizen lain", "Upaya menambah jumlah pengikut"], a: 1, f: "Tepat! Fitur-fitur tersebut diciptakan sebagai perisai perlindungan kenyamanan mental pengguna dari gangguan siber." },
+            { q: "Konsep utama dari anjuran 'Saring sebelum Sharing' yang paling tepat adalah...", o: ["Membagikan berita hanya jika dikirim oleh kerabat dekat", "Mengunggah semua jenis berita ke ruang grup tanpa terkecuali", "Melakukan validasi kebenaran informasi dari sumber resmi sebelum menyebarkannya", "Membagikan konten yang sedang viral agar memperoleh banyak suka"], a: 2, f: "Benar! Memvalidasi kebenaran fakta mencegah meluasnya rantai disinformasi (hoaks)." },
+            { q: "Jenis modus kejahatan siber yang menyamar sebagai instansi resmi untuk menjebak korban memasukkan password disebut...", o: ["Phishing", "Spamming", "Doxing", "Ransomware"], a: 0, f: "Benar! Phishing merupakan rekayasa sosial yang memanipulasi tampilan situs agar mirip aslinya demi mencuri kredensial." },
+            { q: "Kemana warga SMAN 3 Balikpapan dapat melapor jika mengalami perundungan siber secara rahasia?", o: ["Pihak Kepolisian Sektor Balikpapan Kota secara terbuka", "Guru BK atau Unit Konseling PIK-R Bamboo sekolah", "Kolom komentar media sosial resmi sekolah", "Organisasi ekstrakurikuler kepramukaan"], a: 1, f: "Tepat! Unit BK dan PIK-R Bamboo SMAGA siap menampung dan menyelesaikan masalahmu secara terukur dan rahasia." },
+            { q: "Pilar CABE Digital manakah yang menuntut kita untuk memiliki empati tinggi dan tidak menyebarkan pesan kebencian?", o: ["Etika Digital", "Budaya Digital", "Cakap Digital", "Aman Digital"], a: 0, f: "Benar! Etika digital mendorong netizen untuk senantiasa sadar tata krama, menjaga lisan siber, dan berempati." },
+            { q: "Alasan mendasar mengapa apa yang kita unggah di internet sulit dihapus sepenuhnya (jejak digital abadi) adalah...", o: ["Undang-undang melarang penghapusan basis data internet", "Pihak lain dapat menyalin, menangkap layar (screenshot), atau menyebarkan ulang kontenmu", "Semua aplikasi menyimpan salinan otomatis di memori internal semua handphone", "Server pusat internet dunia terletak di luar angkasa"], a: 1, f: "Benar! Sekali suatu data terunggah, pihak lain dapat melipatgandakannya dalam hitungan detik tanpa izin kita." },
+            { q: "Tindakan membatasi interaksi akun pengganggu tanpa memutus pertemanan atau memberi tahu akun tersebut dinamakan...", o: ["Fitur Restrict (Batasi)", "Fitur Block (Blokir)", "Fitur Report (Laporkan)", "Fitur Unfollow (Batal Ikuti)"], a: 0, f: "Benar! Fitur Restrict di Instagram memisahkan komentar akun pengganggu tersebut agar hanya bisa dilihat oleh dirinya sendiri." },
+            { q: "Manakah di bawah ini yang paling menggambarkan tindakan cyberbullying?", o: ["Menolak ajakan bermain game online bersama teman", "Mengirim kritik konstruktif melalui pesan privat yang sopan", "Menyebarkan foto aib teman secara berulang disertai ejekan di kolom komentar", "Menghapus pesan lama yang tidak sengaja terkirim di grup"], a: 2, f: "Benar! Tindakan merendahkan, mempermalukan, dan merisak seseorang secara terus-menerus di dunia digital adalah cyberbullying." },
+            { q: "Hotline darurat nasional yang dapat dihubungi untuk konsultasi kesehatan mental dan pencegahan bunuh diri adalah...", o: ["Hotline Into The Light (119 ext 8)", "Hotline BASARNAS (115)", "Hotline Pemadam Kebakaran (113)", "Hotline Kepolisian RI (110)"], a: 0, f: "Benar! Layanan darurat Into The Light melalui 119 ext 8 siap mendampingi krisis kejiwaan selama 24 jam." },
+            { q: "Kombinasi sandi pengaman akun terbaik agar tidak mudah diretas oleh mesin peretas otomatis adalah...", o: ["Kata sandi yang menggunakan tanggal lahir secara lengkap", "Kata sandi minimal 12 karakter yang memadukan huruf besar-kecil, angka, dan simbol khusus", "Sandi pendek yang diulang sebanyak tiga kali", "Kata sandi yang sama persis dengan nama akun pengguna"], a: 1, f: "Benar! Variasi jenis karakter dan panjang sandi menaikkan tingkat kerumitan algoritma pemecah sandi (brute-force)." },
+            { q: "Aktivitas memanipulasi psikologis korban hingga korban secara sukarela menyerahkan data pribadinya disebut...", o: ["Social Engineering (Rekayasa Sosial)", "Cyber-stalking (Penguntitan Siber)", "Doxing (Penyebaran Data Publik)", "Brute-force (Serangan Paksa)"], a: 0, f: "Benar! Rekayasa sosial menyasar kelemahan emosional korban seperti rasa takut, panik, atau iming-iming hadiah." },
+            { q: "Bagaimana tindakan pencegahan terbaik saat menerima SMS tak dikenal berisi tautan klaim hadiah berbayar?", o: ["Langsung klik dan sebarkan tautan tersebut ke grup keluarga", "Abaikan, blokir nomor pengirim, dan jangan pernah membuka tautan tersebut", "Coba kirimkan ke nomor ponsel milik teman dekat", "Memasukkan data nomor rekening bank untuk mencoba peruntungan"], a: 1, f: "Tepat! Mayoritas SMS klaim hadiah berujung pada penipuan phishing atau malware berbahaya." },
+            { q: "UU ITE yang diamandemen lewat UU No. 1 Tahun 2024 secara tegas melarang hal berikut, kecuali...", o: ["Membuat aduan kelemahan fasilitas umum lewat jalur kritik konstruktif yang sopan", "Menyebarkan ujaran kebencian berdasarkan SARA", "Melakukan peretasan sistem elektronik milik instansi lain", "Menyebarluaskan video asusila orang lain tanpa persetujuan"], a: 0, f: "Tepat! Kritik membangun yang disampaikan secara beradab dilindungi dan tidak memenuhi unsur pidana UU ITE." },
+            { q: "Mengapa data berupa nama lengkap ibu kandung harus dijaga kerahasiaannya dengan ketat?", o: ["Karena dapat digunakan pelaku kejahatan untuk meretas identitas perbankan Anda", "Dapat membuat data kartu keluarga menjadi rusak", "Sebab melanggar kode etik kesopanan adat", "Sering memicu gangguan jaringan pada sistem telepon"], a: 0, f: "Benar! Nama gadis ibu kandung sering dijadikan data kunci otentikasi lapis akhir pada lembaga keuangan nasional." },
+            { q: "Sikap netizen yang gemar melakukan aksi 'Doxing' (menyebarkan info privat orang lain demi sanksi sosial) melanggar pilar...", o: ["Cakap & Budaya", "Budaya & Etika", "Aman & Etika", "Aman & Cakap"], a: 2, f: "Tepat! Doxing melanggar privasi dasar korban (Aman) serta tidak memedulikan sopan santun digital (Etika)." },
+            { q: "Apakah menyebarkan konten disinformasi (hoaks) yang memicu perkelahian massal dapat diancam hukuman penjara?", o: ["Tidak bisa, karena internet bebas dari hukum fisik", "Bisa, berdasarkan pasal-pasal penyebaran berita bohong pada UU ITE", "Hanya jika dilakukan oleh orang dewasa", "Bisa, asalkan pelaku menggunakan akun palsu"], a: 1, f: "Benar! Penyebaran berita bohong yang memicu keonaran diatur ketat dalam UU ITE dengan ancaman pidana berat." },
+            { q: "Pilar Budaya Digital melarang tindakan berikut di ruang internet, yaitu...", o: ["Membuat konten yang merendahkan tradisi suku bangsa lain di Indonesia", "Menggunakan bahasa Indonesia yang baik di media sosial", "Menyelenggarakan pagelaran seni lokal secara virtual gratis", "Melaporkan konten radikal pemecah belah persatuan bangsa"], a: 0, f: "Tepat! Budaya digital berpedoman pada Pancasila dan Bhinneka Tunggal Ika yang menjunjung tinggi toleransi." },
+            { q: "Salah satu indikasi psikis seseorang mengalami kecanduan media sosial yang parah adalah...", o: ["Mampu merakit komputer secara mandiri", "Menurunnya tingkat fokus, gangguan pola tidur, serta rasa cemas saat jauh dari gawai", "Mendapatkan banyak koneksi pertemanan baru di luar negeri", "Memiliki tubuh yang sehat dan bugar akibat rajin berolahraga"], a: 1, f: "Benar! Keterikatan adiktif pada medsos merusak pelepasan hormon dopamin alami, memicu cemas dan sulit fokus." },
+            { q: "Apabila kamu ingin mematikan notifikasi postingan seseorang tanpa perlu memutus pertemanan, fitur terbaik adalah...", o: ["Block (Blokir)", "Mute (Senyap/Sembunyikan)", "Report (Laporkan)", "Restrict (Batasi)"], a: 1, f: "Benar! Fitur Mute menyembunyikan postingan target dari berandamu secara halus tanpa menyinggung perasaan mereka." },
+            { q: "Bagaimana cara merespons paling tepat apabila akun media sosialmu mendadak diretas?", o: ["Menghapus aplikasi medsos dari ponsel selamanya", "Mencoba meretas balik akun milik peretas tersebut", "Segera infokan ke kerabat dekat bahwa akun diretas, lalu hubungi pusat bantuan resmi platform", "Membiarkannya hingga peretas mengembalikannya sendiri"], a: 2, f: "Benar! Memberi tahu kerabat dekat adalah aksi preventif agar mereka tidak terkena modus penipuan kirim uang." },
+            { q: "Tindakan apa yang mencerminkan pilar Cakap Digital yang fungsional?", o: ["Menggunakan software pengolah data untuk membantu efisiensi tugas sekolah", "Bisa menulis komentar pedas dengan kecepatan tinggi tanpa jeda", "Mengunduh game modifikasi ilegal dari situs web tidak resmi", "Menghabiskan waktu menonton video hiburan hingga larut malam"], a: 0, f: "Benar! Cakap digital menekankan pada keahlian mengoperasikan alat digital untuk produktivitas positif." },
+            { q: "Menjaga kerahasiaan nomor OTP (One-Time Password) adalah hal wajib, sebab OTP berfungsi sebagai...", o: ["Kunci sekali pakai untuk menyetujui transaksi atau akses masuk akun penting", "Bonus kuota internet bulanan dari provider", "Nomor antrean resmi pengaduan kasus ke polisi siber", "Alat penentu peringkat dalam permainan daring"], a: 0, f: "Benar! OTP bersifat sangat sensitif karena menyetujui akses masuk akhir ke sistem akun Anda." },
+            { q: "Ketika terjadi kebocoran data pada layanan pihak ketiga, langkah mitigasi paling penting bagi kita adalah...", o: ["Menghapus jaringan koneksi internet di rumah", "Membeli perangkat ponsel baru", "Segera merotasi (mengganti) password akun-akun penting kita", "Melaporkan kejadian ke satpam terdekat"], a: 2, f: "Benar! Mengganti sandi secara berkala meminimalisir kemungkinan akun disusupi hacker pasca kebocoran data." },
+            { q: "Apa etika dasar yang perlu diterapkan saat mengutip materi atau karya orang lain di internet?", o: ["Menghapus identitas pencipta asli agar terlihat rapi", "Menyertakan kredit nama pencipta asli secara jelas", "Memasang tarif harga untuk menyebarkan karya tersebut", "Mengakui sebagai karya buatan sendiri demi kebanggaan diri"], a: 1, f: "Benar! Mencantumkan hak cipta (kredit) pencipta karya menunjukkan sikap netizen yang beradab dan jujur." },
+            { q: "Mengapa bertransaksi keuangan di Wi-Fi publik tanpa VPN sangat tidak dianjurkan?", o: ["Karena kecepatan Wi-Fi publik biasanya lambat", "Berisiko disadap melalui metode 'Man-in-the-Middle' oleh peretas di jaringan yang sama", "Biaya admin perbankan akan melonjak tinggi", "Bisa menghapus seluruh data sistem operasi ponsel"], a: 1, f: "Benar! Jaringan publik yang terbuka memudahkan penyerang memonitor lalu lintas data sensitif yang tidak terenkripsi." },
+            { q: "Penggunaan identitas samaran (anonimitas) di media sosial sering kali disalahgunakan oleh perundung siber karena...", o: ["Mereka merasa tidak dapat dilacak secara fisik sehingga bebas berkomentar kasar", "Sistem medsos melarang penggunaan nama asli", "Membuat postingan mereka mendapat interaksi lebih tinggi", "Nama samaran meningkatkan estetika visual profil"], a: 0, f: "Benar! Rasa aman palsu dari anonimitas kerap membuat orang bertindak kejam tanpa memikirkan konsekuensi moral." },
+            { q: "Sikap yang paling bijak saat menghadapi berita yang bernada provokatif di internet adalah...", o: ["Langsung membagikannya agar teman-teman waspada", "Membalasnya dengan komentar kemarahan agar pembuat berita jera", "Melakukan pengecekan silang (cross-check) fakta di portal berita tepercaya", "Mengabaikan secara total tanpa mencari tahu kebenaran informasinya"], a: 2, f: "Benar! Memverifikasi kebenaran fakta mendinginkan emosi publik dari berita provokatif yang belum tentu benar." },
+            { q: "Di bawah ini adalah risiko bahaya utama dari penginstalan aplikasi modifikasi gratis (bajakan)...", o: ["Membuat kapasitas baterai ponsel bertambah secara alami", "Sering kali disusupi malware berbahaya yang dapat memata-matai data penting Anda", "Mengurangi kecepatan pengisian daya handphone", "Menghilangkan semua iklan di portal pencarian"], a: 1, f: "Benar! Aplikasi bajakan sering kali ditunggangi oleh adware, spyware, atau trojan pencuri kredensial." },
+            { q: "Apa langkah cerdas yang harus dilakukan jika ada akun palsu meniru identitas dirimu di Instagram?", o: ["Mengabaikannya karena tidak ada ruginya bagi dirimu", "Membuat postingan klarifikasi di profil aslimu lalu laporkan (report) akun palsu tersebut", "Membeli pengikut (followers) fiktif agar tidak tersaingi", "Mencoba meretas akun palsu tersebut secara mandiri"], a: 1, f: "Tepat! Melakukan report serta klarifikasi melindungi jaringan pertemananmu dari aksi penipuan oleh akun tiruan." },
+            { q: "Fungsi utama dari Undang-Undang Perlindungan Data Pribadi (UU PDP) adalah...", o: ["Membatasi hak warga negara dalam mengakses internet", "Mengatur kewajiban penyelenggara sistem dalam mengelola data pribadi secara aman", "Melarang masyarakat bertransaksi secara digital", "Mengambil alih seluruh pengelolaan data rahasia oleh satu kementerian"], a: 1, f: "Benar! UU PDP memberikan hak penuh bagi individu atas datanya dan mendenda pengelola data yang teledor." },
+            { q: "Sikap toleran dalam Budaya Digital sesuai sila ke-3 Pancasila ditunjukkan dengan...", o: ["Mendukung aksi tawuran antarpelajar di grup percakapan", "Menghargai perbedaan suku dan agama dalam berinteraksi di ruang komentar", "Menolak berteman dengan netizen yang berbeda pulau", "Membuat petisi online untuk memboikot kebudayaan daerah lain"], a: 1, f: "Tepat! Menjaga kerukunan di dunia digital mencerminkan nilai persatuan nasional yang kokoh." },
+            { q: "Bahaya utama dari fenomena 'FOMO' (Fear of Missing Out) akibat terlalu sering memantau medsos adalah...", o: ["Menjadikan kita ahli dalam analisis pasar modal siber", "Memicu rasa cemas, stres berkelanjutan, dan perasaan tidak puas pada kehidupan sendiri", "Menghilangkan keinginan menggunakan ponsel selamanya", "Meningkatkan prestasi akademis di sekolah secara instan"], a: 1, f: "Benar! FOMO mendorong kecemasan bahwa kehidupan orang lain selalu tampak lebih bahagia dibanding diri kita sendiri." },
+            { q: "Bagaimana cara terbaik memverifikasi kebenaran suatu toko online baru yang belum memiliki reputasi?", o: ["Membayar penuh tanpa menggunakan jaminan rekening bersama", "Memeriksa rekam jejak ulasan asli pembeli dan bertransaksi hanya lewat e-commerce resmi", "Melihat jumlah foto produk yang diunggah", "Percaya begitu saja karena harga barang sangat murah"], a: 1, f: "Benar! E-commerce terpercaya menahan dana pembayaran sampai barang benar-benar dikonfirmasi sampai di tangan pembeli." },
+            { q: "Apabila kamu menerima tautan pendaftaran beasiswa mencurigakan di WhatsApp, cara mengecek keasliannya adalah...", o: ["Langsung mendaftar karena batas waktu pendaftaran biasanya singkat", "Mengecek alamat domain situs webnya (akhiran resmi pendidikan biasanya .sch.id atau .ac.id)", "Mempercayai tautan tersebut jika ada logo kementerian di dalamnya", "Membagikannya dahulu ke grup kelas agar teman-teman ikut mencoba"], a: 1, f: "Tepat! Domain resmi lembaga pendidikan di Indonesia diatur ketat. Hati-hati dengan domain gratisan seperti .blogspot atau .xyz." },
+            { q: "Tindakan apa yang melanggar etika siber saat berada di dalam grup belajar daring SMAN 3 Balikpapan?", o: ["Mengirim tugas rangkuman pelajaran tepat waktu", "Memposting kalimat ejekan atau menyindir teman sekelas", "Bertanya kepada guru menggunakan kalimat formal yang santun", "Membagikan catatan materi tambahan dari buku paket resmi"], a: 1, f: "Tepat! Menyindir atau mengejek teman sekelas melanggar etika dan mengganggu iklim belajar yang harmonis." },
+            { q: "Apa bahaya dari penggunaan bot/cheat dalam game online?", o: ["Membuat permainan terasa lebih menyenangkan", "Dapat berujung pada pemblokiran akun permanen dan kebocoran data akibat malware", "Meningkatkan keterampilan bermain secara alami", "Memperoleh pengakuan resmi dari pengembang game"], a: 1, f: "Benar! Program ilegal sering disisipi Trojan pengambil alih session akun game dan data finansial Anda." },
+            { q: "Manakah tindakan bijak untuk mengatasi kecemburuan sosial akibat melihat gaya hidup glamor teman di Instagram?", o: ["Meminjam uang secara daring untuk meniru gaya hidup mereka", "Melakukan detoks digital (istirahat sejenak dari media sosial) dan bersyukur atas apa yang dimiliki", "Menulis komentar sindiran di postingan teman tersebut", "Membuat akun palsu untuk merundung teman tersebut"], a: 1, f: "Benar! Detoks medsos membantu menjernihkan pikiran dan menjauhkan diri dari perbandingan sosial yang tidak sehat." },
+            { q: "Sanksi pidana UU ITE tentang ujaran kebencian ditujukan untuk mencegah...", o: ["Kritik yang jujur dan objektif terhadap sistem administrasi publik", "Provokasi massa yang mengarah pada konflik antarsuku, ras, atau golongan (SARA)", "Diskusi ilmiah mengenai sejarah lokal di internet", "Penyampaian aspirasi siswa ke pihak manajemen sekolah"], a: 1, f: "Benar! Regulasi tersebut menjaga integrasi bangsa dari upaya provokasi siber pemecah belah persatuan." },
+            { q: "Bagaimanakah sikap yang paling mencerminkan pilar Aman Digital?", o: ["Menggunakan satu password yang sama untuk seluruh akun media sosial", "Rutin memperbarui sistem operasi gawai serta waspada terhadap akses file tak dikenal", "Membagikan riwayat lokasi terkini secara langsung setiap saat", "Membiarkan layar ponsel terbuka tanpa kunci pengaman"], a: 1, f: "Benar! Pembaruan berkala menambal celah keamanan sistem siber dari eksploitasi peretas." },
+            { q: "Mengapa merisak seseorang lewat kolom komentar dinilai sebagai tindakan pengecut?", o: ["Karena merusak tampilan visual halaman akun korban", "Pelaku bersembunyi di balik layar gawai tanpa berani berhadapan secara fisik", "Sebab melanggar peraturan jam malam penggunaan internet", "Karena tidak mendatangkan keuntungan finansial bagi pelaku"], a: 1, f: "Tepat! Pelaku perundungan siber kerap berani bertindak kejam hanya karena dilindungi oleh jarak fisik dan anonimitas layar." },
+            { q: "Apa fungsi utama layanan Ruang Peduli Digital khusus warga SMAGA ini?", o: ["Sebagai tempat pendaftaran beasiswa ke luar negeri", "Wadah edukatif penunjang literasi digital sekaligus gerbang aduan kesehatan mental yang aman", "Media promosi untuk pariwisata kota Balikpapan", "Toko kelontong online milik koperasi sekolah"], a: 1, f: "Benar! Aplikasi ini memadukan edukasi digital preventif dengan layanan konseling BK yang aman dan suportif." },
+            { q: "Modus penipuan di mana pelaku berpura-pura menjadi anggota keluarga yang tertangkap polisi dan meminta uang tebusan disebut...", o: ["Phishing", "Ransomware", "Social Engineering (Vishing)", "Doxing"], a: 2, f: "Benar! Vishing (voice phishing) memanfaatkan rasa panik korban melalui panggilan telepon langsung." },
+            { q: "Mencintai tanah air melalui Budaya Digital di SMAN 3 Balikpapan dapat dilakukan dengan...", o: ["Mempromosikan batik Shaho khas Balikpapan melalui karya tulis kreatif di media sosial", "Mengikuti semua tren tantangan ekstrem luar negeri yang tidak sesuai norma", "Memboikot semua teknologi buatan luar negeri secara mentah-mentah", "Membuat perdebatan kusir mengenai keunggulan daerah masing-masing"], a: 0, f: "Tepat! Memperkenalkan kearifan lokal secara positif membuktikan nasionalisme siber yang produktif." },
+            { q: "Ketika kamu mencurigai sebuah situs web palsu yang meniru bank ternama, hal pertama yang harus kamu periksa adalah...", o: ["Warna dominan dari logo bank tersebut", "URL/alamat domain pada address bar browser Anda secara jeli", "Jumlah gambar slide promosi di halaman utama", "Kecepatan akses memuat halaman situs"], a: 1, f: "Benar! Penipu hanya bisa meniru tampilan visual, tetapi tidak akan pernah bisa mendapatkan URL domain resmi milik bank asli." },
+            { q: "Jika mendapati teman dekat terjerumus adiksi judi online dan berniat berutang kepadamu, sikap terbaikmu adalah...", o: ["Meminjamkan uang tersebut demi menjaga rasa solidaritas pertemanan", "Menolak meminjamkan uang dan menyarankan dia berkonsultasi ke Guru BK atau psikolog profesional", "Membiarkannya bertindak sesuka hati tanpa memberi nasihat", "Ikut mendaftar akun agar bisa memenangkan taruhan bersama-sama"], a: 1, f: "Benar! Membantu secara finansial justru memperparah ketergantungannya. Ia butuh bantuan profesional untuk lepas dari kecanduan judi." }
+        ];
+
+        // --- 3. GAME SNAKES AND LADDERS LOGIC ---
+        const boardGrid = document.getElementById('board-grid');
+        const playerPion = document.getElementById('player-pion');
+        const btnRoll = document.getElementById('btn-roll');
+        const btnQuizNext = document.getElementById('btn-quiz-next');
+        const diceView = document.getElementById('dice-view');
+        const gameStatus = document.getElementById('game-status');
+        
+        const quizModal = document.getElementById('quiz-modal');
+        const quizQuestion = document.getElementById('quiz-question');
+        const quizOptionsContainer = document.getElementById('quiz-options-container');
+        const quizFeedback = document.getElementById('quiz-feedback');
+
+        let playerPosition = 1; // Mulai dari kotak 1
+        let rolledNumber = 1;
+        let activeQuiz = null;
+
+        // Struktur Ular (Kepala -> Ekor) & Tangga (Kaki -> Puncak)
+        const snakes = {
+            17: 7,
+            54: 34,
+            62: 19,
+            64: 60,
+            87: 24,
+            93: 73,
+            95: 75,
+            98: 79
+        };
+
+        const ladders = {
+            4: 14,
+            9: 31,
+            20: 38,
+            28: 84,
+            40: 59,
+            51: 67,
+            63: 81,
+            71: 91
+        };
+
+        // Render Board 10x10 secara dinamis
+        function createBoard() {
+            boardGrid.innerHTML = '';
+            // Baris atas ke bawah (9 ke 0)
+            for (let r = 9; r >= 0; r--) {
+                // Kolom bolak-balik (boustrophedon)
+                let isEvenRow = (r % 2 === 0);
+                if (isEvenRow) {
+                    for (let c = 0; c < 10; c++) {
+                        renderCell(r, c);
+                    }
+                } else {
+                    for (let c = 9; c >= 0; c--) {
+                        renderCell(r, c);
+                    }
+                }
+            }
+        }
+
+        function renderCell(row, col) {
+            const cellNumber = row * 10 + col + 1;
+            const cell = document.createElement('div');
+            cell.id = `cell-${cellNumber}`;
+            cell.className = `flex flex-col items-center justify-center p-1 border border-slate-200/60 font-cute text-xs sm:text-sm font-bold transition-all duration-300 relative select-none`;
+            
+            // Warna pastel selang-seling imut
+            if (cellNumber % 2 === 0) {
+                cell.classList.add('bg-blue-50/70');
+            } else {
+                cell.classList.add('bg-pink-50/70');
+            }
+
+            // TANDA ULAR / TANGGA (DIDESAIN RAPI DAN TIDAK BERANTAKAN DI HP)
+            if (snakes[cellNumber]) {
+                cell.classList.add('bg-red-100/40');
+                const badge = document.createElement('div');
+                badge.className = 'absolute top-0.5 right-0.5 bg-red-500 text-white text-[7px] sm:text-[9px] px-1 py-0.2 rounded font-bold scale-90 sm:scale-100';
+                badge.innerHTML = `🐍 ➔ ${snakes[cellNumber]}`;
+                cell.appendChild(badge);
+            } else if (ladders[cellNumber]) {
+                cell.classList.add('bg-emerald-100/40');
+                const badge = document.createElement('div');
+                badge.className = 'absolute top-0.5 right-0.5 bg-emerald-600 text-white text-[7px] sm:text-[9px] px-1 py-0.2 rounded font-bold scale-90 sm:scale-100';
+                badge.innerHTML = `🪜 ➔ ${ladders[cellNumber]}`;
+                cell.appendChild(badge);
+            }
+
+            // Tambahkan nomor urut kotak yang tetap terbaca jelas di bawah
+            const numSpan = document.createElement('span');
+            numSpan.textContent = cellNumber;
+            numSpan.className = 'text-slate-500 absolute bottom-0.5 left-1 text-[9px] sm:text-xs font-bold';
+            cell.appendChild(numSpan);
+
+            boardGrid.appendChild(cell);
+        }
+
+        // Hitung Koordinat Persentase untuk Penempatan Pion
+        function getCellCoords(num) {
+            const row = Math.floor((num - 1) / 10);
+            const col = (num - 1) % 10;
+            const isEvenRow = (row % 2 === 0);
+            
+            let xPercent = isEvenRow ? col * 10 : (9 - col) * 10;
+            let yPercent = row * 10;
+
+            return { x: xPercent, y: yPercent };
+        }
+
+        // Update Posisi Visual Pion Pemain
+        function updatePionPosition() {
+            const coords = getCellCoords(playerPosition);
+            // Penempatan presisi di tengah sel koordinat
+            playerPion.style.left = `calc(${coords.x}% + 1%)`;
+            playerPion.style.bottom = `calc(${coords.y}% + 1%)`;
+        }
+
+        // Kocok Dadu
+        btnRoll.addEventListener('click', () => {
+            if (playerPosition >= 100) {
+                gameStatus.textContent = "Kamu sudah menang! Halaman akan direfresh untuk bermain kembali.";
+                setTimeout(() => { location.reload(); }, 2000);
+                return;
+            }
+
+            btnRoll.disabled = true;
+            btnRoll.classList.add('opacity-50');
+            
+            // Animasi kocok dadu visual
+            let rollAnimInterval = setInterval(() => {
+                diceView.textContent = Math.floor(Math.random() * 6) + 1;
+            }, 80);
+
+            setTimeout(() => {
+                clearInterval(rollAnimInterval);
+                rolledNumber = Math.floor(Math.random() * 6) + 1;
+                diceView.textContent = getDiceEmoji(rolledNumber);
+                gameStatus.textContent = `Kamu mendapatkan angka ${rolledNumber}! Jawab kuis untuk melangkah.`;
+
+                // Tampilkan Kuis Literasi Digital Acak
+                triggerQuiz();
+            }, 800);
+        });
+
+        function getDiceEmoji(num) {
+            const emojis = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
+            return emojis[num - 1] || "🎲";
+        }
+
+        // Fungsi bantu untuk mengacak array (Fisher-Yates Shuffle)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Picu Kuis Pop-up
+        function triggerQuiz() {
+            // Pilih soal secara acak dari bank kuis
+            const randomIndex = Math.floor(Math.random() * quizBank.length);
+            const rawQuiz = quizBank[randomIndex];
+
+            // Proses Pengacakan Jawaban Dinamis agar tidak berpola
+            const mappedOptions = rawQuiz.o.map((opt, index) => {
+                return { text: opt, isCorrect: index === rawQuiz.a };
+            });
+
+            // Acak urutan pilihan
+            const shuffledOptions = shuffleArray([...mappedOptions]);
+
+            // Cari tahu indeks jawaban benar setelah diacak
+            const correctIndex = shuffledOptions.findIndex(item => item.isCorrect);
+
+            // Simpan data kuis aktif ter-update
+            activeQuiz = {
+                q: rawQuiz.q,
+                o: shuffledOptions.map(item => item.text),
+                a: correctIndex,
+                f: rawQuiz.f
+            };
+
+            quizQuestion.textContent = activeQuiz.q;
+            quizOptionsContainer.innerHTML = '';
+            quizFeedback.classList.add('hidden');
+            btnQuizNext.classList.add('hidden');
+
+            activeQuiz.o.forEach((option, idx) => {
+                const btnOpt = document.createElement('button');
+                btnOpt.className = "w-full text-left p-3.5 sm:p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 font-semibold transition-all duration-300 text-xs sm:text-sm flex items-center gap-3";
+                btnOpt.innerHTML = `<span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-500 shrink-0">${String.fromCharCode(65 + idx)}</span> <span class="leading-relaxed">${option}</span>`;
+                
+                btnOpt.addEventListener('click', () => submitAnswer(idx, btnOpt));
+                quizOptionsContainer.appendChild(btnOpt);
+            });
+
+            // Munculkan Modal
+            quizModal.classList.remove('hidden');
+        }
+
+        // Tanggapan Jawaban Kuis
+        function submitAnswer(selectedIndex, selectedButton) {
+            // Nonaktifkan semua tombol pilihan
+            const allButtons = quizOptionsContainer.querySelectorAll('button');
+            allButtons.forEach(btn => btn.disabled = true);
+
+            const isCorrect = (selectedIndex === activeQuiz.a);
+            
+            // Sembunyikan style hover
+            selectedButton.classList.remove('hover:border-blue-400', 'hover:bg-blue-50/50');
+
+            if (isCorrect) {
+                selectedButton.classList.add('border-emerald-500', 'bg-emerald-50/60');
+                selectedButton.querySelector('span').className = 'w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-emerald-500 flex items-center justify-center text-xs font-bold text-white shrink-0';
+                
+                quizFeedback.className = "p-4 rounded-2xl text-xs sm:text-sm bg-emerald-100/70 text-emerald-800 border border-emerald-200";
+                quizFeedback.innerHTML = `🎉 <strong>Benar Sekali!</strong><br>${activeQuiz.f}`;
+                
+                // Konfigurasi jalan pion
+                btnQuizNext.onclick = () => {
+                    closeModalAndMove(true);
+                };
+            } else {
+                selectedButton.classList.add('border-rose-400', 'bg-rose-50/60');
+                selectedButton.querySelector('span').className = 'w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-rose-500 flex items-center justify-center text-xs font-bold text-white shrink-0';
+                
+                // Highlight jawaban yang benar
+                const correctButton = allButtons[activeQuiz.a];
+                correctButton.classList.add('border-emerald-500', 'bg-emerald-50/30');
+                
+                quizFeedback.className = "p-4 rounded-2xl text-xs sm:text-sm bg-rose-50/80 text-rose-800 border border-rose-200";
+                quizFeedback.innerHTML = `😢 <strong>Ups, Salah!</strong><br>${activeQuiz.f}<br><span class="text-[11px] text-rose-600 italic">Langkah batal, kamu tetap di tempat semula untuk giliran ini. Coba lagi ya!</span>`;
+                
+                btnQuizNext.onclick = () => {
+                    closeModalAndMove(false);
+                };
+            }
+
+            quizFeedback.classList.remove('hidden');
+            btnQuizNext.classList.remove('hidden');
+        }
+
+        // Tutup Modal dan Jalankan Pion jika Benar
+        function closeModalAndMove(movePion) {
+            quizModal.classList.add('hidden');
+            btnRoll.disabled = false;
+            btnRoll.classList.remove('opacity-50');
+
+            if (movePion) {
+                let targetPos = playerPosition + rolledNumber;
+                
+                // Cek overshoot batas akhir (100)
+                if (targetPos > 100) {
+                    gameStatus.textContent = `Poin dadu (${rolledNumber}) berlebih dari target kotak 100! Kamu tetap di kotak ${playerPosition}.`;
+                    return;
+                }
+
+                playerPosition = targetPos;
+                updatePionPosition();
+                gameStatus.textContent = `Berhasil maju ke kotak ${playerPosition}! 🎉`;
+
+                // Cek Tangga atau Ular di tempat mendarat
+                setTimeout(() => {
+                    if (ladders[playerPosition]) {
+                        playerPosition = ladders[playerPosition];
+                        updatePionPosition();
+                        gameStatus.textContent = `Yuhuuu! Naik tangga ke kotak ${playerPosition}! 🪜🌟`;
+                    } else if (snakes[playerPosition]) {
+                        playerPosition = snakes[playerPosition];
+                        updatePionPosition();
+                        gameStatus.textContent = `Aww, kegigit ular! Turun ke kotak ${playerPosition}! 🐍💔`;
+                    }
+
+                    // Cek Menang
+                    if (playerPosition === 100) {
+                        gameStatus.textContent = "🏆 Selamat! Kamu berhasil memenangkan Ular Tangga Literasi Digital SMAGA! 🥳";
+                        alert("Selamat! Kamu Berhasil Menamatkan Ular Tangga Literasi Digital SMAN 3 Balikpapan! 🎉");
+                    }
+                }, 600);
+
+            } else {
+                gameStatus.textContent = `Jawaban salah! Kamu tetap bertahan di kotak ${playerPosition}.`;
+            }
+        }
+
+        // Inisialisasi Permainan saat window dimuat
+        window.addEventListener('DOMContentLoaded', () => {
+            createBoard();
+            updatePionPosition();
+        });
+    </script>
+</body>
+</html>
