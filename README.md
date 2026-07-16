@@ -22,7 +22,6 @@ Aplikasi ini terbagi menjadi 4 ruang utama yang dapat diakses dengan mudah:
 ### 3. 🎮 Bermain Game (Gamifikasi Interaktif)
 Dua opsi permainan edukatif yang menantang dengan bank soal berisi **75 variasi kuis literasi digital menjebak**:
 * **🎲 Ular Tangga Digital:** Papan 10x10 interaktif yang dilengkapi petunjuk rute lompatan (*Jump Route Text*) yang jelas pada kotak tangga/ular (misal: *Lompat 4➔14* atau *Turun 99➔78*). Pion bergerak dengan animasi halus dan disertai panduan bermain terintegrasi.
-* **🐊 Peta Rawa Literasi (Vertical Map):** Jalur penyeberangan batu apung vertikal (10 Posisi Langkah menuju *Finish*). Dilengkapi animasi lompatan parabola karakter (`🐥`) dan mekanik *click-timing bar* yang ramah pengguna (Target area aman diperlebar menjadi 30% sehingga lebih mudah diklik).
 
 ### 4. 🛡️ Ruang Lapor (Aduan Aman)
 * Integrasi langsung menuju Google Form Layanan Pengaduan Rahasia BK Smaga & PIK-R Bamboo.
@@ -46,4 +45,4 @@ Karena proyek ini bersifat *client-side* murni, Anda tidak memerlukan proses ins
 
 1. **Clone repositori ini:**
    ```bash
-   git clone [https://github.com/username-kamu/ruang-peduli-digital-smaga.git](https://github.com/username-kamu/ruang-peduli-digital-smaga.git)
+   git clone [https://github.com/faqihakunkerja-netizen/ruang-peduli-digital-smaga.git](https://github.com/faqihakunkerja-netizen/ruang-peduli-digital-smaga.git)
